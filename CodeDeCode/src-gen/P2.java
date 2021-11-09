@@ -177,35 +177,43 @@ public final class P2 {
           $line=56;
           Object b=$fix($getArrayValue(B,new Object[]{1,1}));
           $line=57;
-          if ($opEqualY(n,'$')) {
+          if (($opEqualY(n,'$')&&$opEqualY($getArrayValue(B,new Object[]{0}),':'))) {
             $line=58;
-            $result='$';
+            $result="err";
             if (true) break $try;
           }
           else {
             $line=59;
-            if ($opEqualY(n,':')) {
+            if ($opEqualY(n,'$')) {
               $line=60;
-              $result="err";
+              $result='$';
               if (true) break $try;
             }
             else {
               $line=61;
-              if (!$opMembrY(n,A)) {
+              if ($opEqualY(n,':')) {
                 $line=62;
-                $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,b)));
+                $result="err";
                 if (true) break $try;
               }
               else {
-                $line=64;
-                $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
-                if (true) break $try;
+                $line=63;
+                if (!$opMembrY(n,A)) {
+                  $line=64;
+                  $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,b)));
+                  if (true) break $try;
+                }
+                else {
+                  $line=66;
+                  $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                  if (true) break $try;
+                }
               }
             }
           }
         }
       }
-      $line=68;
+      $line=70;
       $rethrow(new RuntimeException("The function \"\u03B4(\u27E8A,B\u27E9:java.lang.Iterable,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -217,26 +225,26 @@ public final class P2 {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=71;
+      $line=73;
       if (($opEqualY(A,'I')&&!$opMembrY(n,alf))) {
-        $line=72;
+        $line=74;
         $result="";
         if (true) break $try;
       }
       else {
-        $line=73;
+        $line=75;
         if ($opEqualY(A,'I')) {
-          $line=74;
+          $line=76;
           $result=n;
           if (true) break $try;
         }
         else {
-          $line=76;
+          $line=78;
           $result="";
           if (true) break $try;
         }
       }
-      $line=78;
+      $line=80;
       $rethrow(new RuntimeException("The function \"h(A:Object,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -251,86 +259,86 @@ public final class P2 {
       java.util.Iterator $v4=GCollections.unmodifiableCollection($v3).iterator();
       Object A=$v4.next();
       Object B=$v4.next();
-      $line=81;
+      $line=83;
       if ((($opEqualY(A,"")||$bool((!$opMembrY(A,alf)&&$bool(($opEqualY($getArrayValue(A,new Object[]{0}),"")||$opEqualY($getArrayValue(A,new Object[]{1}),""))))))||$bool(((!$opMembrY(B,alf)&&$opGreatY($opAbsolY(B),1))&&$opEqualY($getArrayValue(B,new Object[]{0}),""))))) {
-        $line=82;
+        $line=84;
         $result="";
         if (true) break $try;
       }
       else {
-        $line=83;
+        $line=85;
         if ($opMembrY(A,alf)) {
-          $line=84;
+          $line=86;
           if (($opMembrY(B,alf)&&$opEqualY(n,':'))) {
-            $line=85;
+            $line=87;
             $result=':';
             if (true) break $try;
           }
           else {
-            $line=86;
+            $line=88;
             if ((!$opMembrY(B,alf)&&$opMembrY(n,alf))) {
-              $line=87;
+              $line=89;
               $result=n;
               if (true) break $try;
             }
             else {
-              $line=89;
+              $line=91;
               $result="";
               if (true) break $try;
             }
           }
         }
         else {
-          $line=92;
+          $line=94;
           if ($opEqualY(n,':')) {
-            $line=93;
+            $line=95;
             $result="";
             if (true) break $try;
           }
           else {
-            $line=94;
+            $line=96;
             if ($opEqualY(n,'$')) {
-              $line=95;
+              $line=97;
               $result=$getArrayValue(B,new Object[]{1,1});
               if (true) break $try;
             }
             else {
-              $line=96;
+              $line=98;
               if ((!$opMembrY(n,A)&&$opEqualY(n,$getArrayValue(B,new Object[]{0})))) {
-                $line=97;
+                $line=99;
                 $result="#";
                 if (true) break $try;
               }
               else {
-                $line=98;
+                $line=100;
                 if (((!$opMembrY(n,A)&&!$opEqualY(n,$getArrayValue(B,new Object[]{0})))&&$opEqualY($getArrayValue(B,new Object[]{1,0}),1))) {
-                  $line=99;
+                  $line=101;
                   $result=P2.nextToUpper(n);
                   if (true) break $try;
                 }
                 else {
-                  $line=100;
+                  $line=102;
                   if (((!$opMembrY(n,A)&&!$opEqualY(n,$getArrayValue(B,new Object[]{0})))&&$opEqualY($getArrayValue(B,new Object[]{1,0}),2))) {
-                    $line=101;
+                    $line=103;
                     $result=P2.toUpper(n);
                     if (true) break $try;
                   }
                   else {
-                    $line=102;
+                    $line=104;
                     if ($opEqualY(n,$getArrayValue(A,new Object[]{0}))) {
-                      $line=103;
+                      $line=105;
                       $result=$getArrayValue(A,new Object[]{1});
                       if (true) break $try;
                     }
                     else {
-                      $line=104;
+                      $line=106;
                       if ($opEqualY(n,$getArrayValue(A,new Object[]{1}))) {
-                        $line=105;
+                        $line=107;
                         $result=$getArrayValue(A,new Object[]{0});
                         if (true) break $try;
                       }
                       else {
-                        $line=107;
+                        $line=109;
                         $result=n;
                         if (true) break $try;
                       }
@@ -342,7 +350,7 @@ public final class P2 {
           }
         }
       }
-      $line=110;
+      $line=112;
       $rethrow(new RuntimeException("The function \"h(\u27E8A,B\u27E9:java.lang.Iterable,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -354,10 +362,10 @@ public final class P2 {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=113;
+      $line=115;
       $result="";
       if (true) break $try;
-      $line=114;
+      $line=116;
       $rethrow(new RuntimeException("The function \"g(s:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -369,15 +377,15 @@ public final class P2 {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=117;
+      $line=119;
       Character r=null;
       r=$defaultValue(Character.class);
-      $line=118;
+      $line=120;
       r=$cast(Character.class,$fix($opAdditY($opSubtrY($opModulY($opAdditY($opSubtrY(n,'a'),1),26),32),'a')));
-      $line=119;
+      $line=121;
       $result=r;
       if (true) break $try;
-      $line=120;
+      $line=122;
       $rethrow(new RuntimeException("The function \"nextToUpper(n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -389,15 +397,15 @@ public final class P2 {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=123;
+      $line=125;
       Character r=null;
       r=$defaultValue(Character.class);
-      $line=124;
+      $line=126;
       r=$cast(Character.class,$fix($opAdditY($opSubtrY($opSubtrY(n,'a'),32),'a')));
-      $line=125;
+      $line=127;
       $result=r;
       if (true) break $try;
-      $line=126;
+      $line=128;
       $rethrow(new RuntimeException("The function \"toUpper(n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
