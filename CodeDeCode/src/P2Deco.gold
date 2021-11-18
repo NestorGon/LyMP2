@@ -1,6 +1,7 @@
 
 using gold.**
 
+var M
 var alf
 
 procedure main ( args : String [ ] ) begin
@@ -16,10 +17,12 @@ procedure main ( args : String [ ] ) begin
 end
 
 function createDecoder ( ) : ITransducer begin
-	alf := ( 'a' ‥ 'z' )
-	A := alf ∪ { λ }
+	M := ('A'‥'D')
+	alf := ( 'a' ‥ 'd' ) 
+	A := alf ∪ { λ, '#'}
+	AA := A ∪ M 
 	B := ( 0 ‥ 2 ) × ( 0 ‥ 4 )
-	C := (A × B) ∪ {⟨':',⟨1,0⟩⟩}
+	C := (A × B ) ∪ {⟨':',⟨1,0⟩⟩} 
 	D := A × A
 	Q := D ∪ ( D × C ) ∪ { 'I' , "num" , "err" } 
 	Σ := alf  ∪ {':'} ∪ { '#' } ∪ ( 'A' ‥ 'Z' ) ∪ ( '0' ‥ '4' )
@@ -43,13 +46,19 @@ function δ ( A , n ) begin
 end
 
 function δ ( ⟨ A , B ⟩ , n ) begin
-	if A = λ or (A ∉ alf and (A[0] = λ or A[1] = λ)) or ( B ∉ alf and |B| > 1 and B[0] = λ) then
+	if A ∈ M or B ∈ M or A='#'or B='#' then
+		return "err"
+	elseif A = λ or (A ∉ alf and |A| > 1 and (A[0] = λ or A[1] = λ)) or (B ∉ alf and |B| > 1 and B[0] = λ) then
 		return "err"
 	elseif A ∈ alf then
 		if B ∈ alf and n = ':' then
 			return ⟨ ⟨ A , B ⟩ , ⟨ ':' , ⟨ 1, 0 ⟩ ⟩ ⟩
 		elseif B ∉ alf and n ∈ alf then
-			return ⟨ A , n ⟩
+			if n ≠'#' then
+				return ⟨ A , n ⟩
+			else
+				return "err"
+			end
 		else
 			return "err"
 		end
@@ -59,21 +68,43 @@ function δ ( ⟨ A , B ⟩ , n ) begin
 		//Si hay un final y antes hay un dos puntos en la mitad de la cadena
 		if n = "num" and B[0] = ':' then
 			return "err"
+		elseif n = A[0] then
+				return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		elseif n = A[1] then
+				return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		elseif n = toUpper(A[0]) and a=2 then
+			return "err"
+		elseif n = nextToUpper(A[0]) and a=1 then
+			return "err"
+		elseif n = toUpper(A[1]) and a=2 then
+			return "err"
+		elseif n = nextToUpper(A[1]) and a=1 then
+			return "err"
 		//Si el valor es igual a el final termina
 		elseif n = b then
 			return "num"
+		//Si el valor actual es # o un num y el anterior es ':' error
+		elseif (n = '#' or n = ( '0' ‥ '4' )) and B[0] = ':' then
+			return "err"
+		//Si el %3 es 0 y n es minuscula dejar igual
 		elseif a=0 and n∈alf then
 			return ⟨ A , ⟨ n , ⟨ a , b ⟩ ⟩ ⟩
-		elseif a=1 and n∉alf then
-			return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
-		elseif a=2 and n∉alf then
-			return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		//Si el %3 es 1 y n es mayuscula aumentar el numero de cambios
+		elseif a=1 and n∈M then
+			return ⟨ A , ⟨ backToDown(n) , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		//Si el %3 es 2 y n es mayuscula aumentar el numero de cambios
+		elseif a=2 and n∈M then
+			return ⟨ A , ⟨ toDown(n) , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		//Si el simbolo es # aumentar el numero de cambios
 		elseif n='#' then		
 			return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+		//Si %3 es 1 y el anterior es igual al actual (con cambio) manda error porque deberia ser #
 		elseif a=1 and B[0]== backToDown(n)then
 			return "err"
+		//Si el %3 es 2 y el anterior es igual al actual (con cambio) manda error porque deberia ser #
 		elseif a=2 and B[0]== toDown(n)then
 			return "err"
+		
 		else
 			return "err"
 		end
@@ -110,7 +141,7 @@ function h ( ⟨ A , B ⟩ , n ) begin
 			return A[1]
 		elseif n = A[1] then
 			return A[0]
-		elseif n ∉ A and n = '#' then
+		elseif n = '#' then
 			return B[0]
 		elseif n ∉ A and n ≠ B[0] and B[1][0] = 1 then
 			return backToDown(n)
@@ -135,6 +166,18 @@ end
 function toDown( n ) begin
 	var r : Character
 	r := ((n-'a') +32) +'a'
+	return r
+end
+
+function nextToUpper( n ) begin
+	var r : Character
+	r := (((n-'a'+1)%26) -32) +'a'
+	return r
+end
+
+function toUpper( n ) begin
+	var r : Character
+	r := ((n-'a') -32) +'a'
 	return r
 end
 

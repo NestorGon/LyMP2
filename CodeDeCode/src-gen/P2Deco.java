@@ -49,17 +49,18 @@ public final class P2Deco {
   static {
     gold.swing.util.GUtilities.installGoldLookAndFeel();
   }
+  public static Object M=null;
   public static Object alf=null;
   public static void main(String[] args) {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=7;
+      $line=8;
       java.util.Scanner sc=null;
       sc=$invokeConstructor(java.util.Scanner.class,new Object[]{$invokeField(System.class,"in",true,null)});
-      $line=8;
+      $line=9;
       Object decoder=$fix(P2Deco.createDecoder());
-      $line=14;
+      $line=15;
       Utilities.test($cast(gold.structures.automaton.IAutomaton.class,decoder));
     }
     catch (Throwable $throwable) {
@@ -70,30 +71,34 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=19;
-      alf=$fix($opIntvlY('a','z'));
       $line=20;
-      Object A=$fix($opUnionY(alf,GCollections.asSet("")));
+      M=$fix($opIntvlY('A','D'));
       $line=21;
-      Object B=$fix($opCartsY(new Object[]{$opIntvlY(0,2),$opIntvlY(0,4)}));
+      alf=$fix($opIntvlY('a','d'));
       $line=22;
-      Object C=$fix($opUnionY($opCartsY(new Object[]{A,B}),GCollections.asSet(GCollections.asList(':',GCollections.asList(1,0)))));
+      Object A=$fix($opUnionY(alf,GCollections.asSet("",'#')));
       $line=23;
-      Object D=$fix($opCartsY(new Object[]{A,A}));
+      Object AA=$fix($opUnionY(A,M));
       $line=24;
-      Object Q=$fix($opUnionY($opUnionY(D,$opCartsY(new Object[]{D,C})),GCollections.asSet('I',"num","err")));
+      Object B=$fix($opCartsY(new Object[]{$opIntvlY(0,2),$opIntvlY(0,4)}));
       $line=25;
-      Object \u03A3=$fix($opUnionY($opUnionY($opUnionY($opUnionY(alf,GCollections.asSet(':')),GCollections.asSet('#')),$opIntvlY('A','Z')),$opIntvlY('0','4')));
+      Object C=$fix($opUnionY($opCartsY(new Object[]{A,B}),GCollections.asSet(GCollections.asList(':',GCollections.asList(1,0)))));
       $line=26;
-      Object \u03A3_=$fix($opUnionY($opUnionY(alf,GCollections.asSet(':')),GCollections.asSet('$')));
+      Object D=$fix($opCartsY(new Object[]{A,A}));
       $line=27;
-      Object q_0=$fix('I');
+      Object Q=$fix($opUnionY($opUnionY(D,$opCartsY(new Object[]{D,C})),GCollections.asSet('I',"num","err")));
       $line=28;
-      Object F=$fix(GCollections.asSet("num"));
+      Object \u03A3=$fix($opUnionY($opUnionY($opUnionY($opUnionY(alf,GCollections.asSet(':')),GCollections.asSet('#')),$opIntvlY('A','Z')),$opIntvlY('0','4')));
+      $line=29;
+      Object \u03A3_=$fix($opUnionY($opUnionY(alf,GCollections.asSet(':')),GCollections.asSet('$')));
       $line=30;
+      Object q_0=$fix('I');
+      $line=31;
+      Object F=$fix(GCollections.asSet("num"));
+      $line=33;
       $result=$invokeConstructor(GDeterministicTransducer.class,new Object[]{Q,\u03A3,\u03A3_,q_0,F,new GMethod(P2Deco.class,"\u03B4"),new GMethod(P2Deco.class,"g"),new GMethod(P2Deco.class,"h")});
       if (true) break $try;
-      $line=31;
+      $line=34;
       $rethrow(new RuntimeException("The function \"createDecoder()\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -105,29 +110,29 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=36;
+      $line=39;
       if (($opEqualY(A,'I')&&!$opMembrY(n,alf))) {
-        $line=37;
+        $line=40;
         $result="err";
         if (true) break $try;
       }
       else {
-        $line=38;
+        $line=41;
         if ($opEqualY(A,'I')) {
-          $line=39;
+          $line=42;
           $result=GCollections.asList(n,"");
           if (true) break $try;
         }
         else {
-          $line=40;
+          $line=43;
           if (($opEqualY(A,"err")||$opEqualY(A,"num"))) {
-            $line=41;
+            $line=44;
             $result="err";
             if (true) break $try;
           }
         }
       }
-      $line=43;
+      $line=46;
       $rethrow(new RuntimeException("The function \"\u03B4(A:Object,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -142,99 +147,171 @@ public final class P2Deco {
       java.util.Iterator $v2=GCollections.unmodifiableCollection($v1).iterator();
       Object A=$v2.next();
       Object B=$v2.next();
-      $line=46;
-      if ((($opEqualY(A,"")||$bool((!$opMembrY(A,alf)&&$bool(($opEqualY($getArrayValue(A,new Object[]{0}),"")||$opEqualY($getArrayValue(A,new Object[]{1}),""))))))||$bool(((!$opMembrY(B,alf)&&$opGreatY($opAbsolY(B),1))&&$opEqualY($getArrayValue(B,new Object[]{0}),""))))) {
-        $line=47;
+      $line=49;
+      if (((($opMembrY(A,M)||$opMembrY(B,M))||$opEqualY(A,'#'))||$opEqualY(B,'#'))) {
+        $line=50;
         $result="err";
         if (true) break $try;
       }
       else {
-        $line=48;
-        if ($opMembrY(A,alf)) {
-          $line=49;
-          if (($opMembrY(B,alf)&&$opEqualY(n,':'))) {
-            $line=50;
-            $result=GCollections.asList(GCollections.asList(A,B),GCollections.asList(':',GCollections.asList(1,0)));
-            if (true) break $try;
-          }
-          else {
-            $line=51;
-            if ((!$opMembrY(B,alf)&&$opMembrY(n,alf))) {
-              $line=52;
-              $result=GCollections.asList(A,n);
+        $line=51;
+        if ((($opEqualY(A,"")||$bool(((!$opMembrY(A,alf)&&$opGreatY($opAbsolY(A),1))&&$bool(($opEqualY($getArrayValue(A,new Object[]{0}),"")||$opEqualY($getArrayValue(A,new Object[]{1}),""))))))||$bool(((!$opMembrY(B,alf)&&$opGreatY($opAbsolY(B),1))&&$opEqualY($getArrayValue(B,new Object[]{0}),""))))) {
+          $line=52;
+          $result="err";
+          if (true) break $try;
+        }
+        else {
+          $line=53;
+          if ($opMembrY(A,alf)) {
+            $line=54;
+            if (($opMembrY(B,alf)&&$opEqualY(n,':'))) {
+              $line=55;
+              $result=GCollections.asList(GCollections.asList(A,B),GCollections.asList(':',GCollections.asList(1,0)));
               if (true) break $try;
             }
             else {
-              $line=54;
+              $line=56;
+              if ((!$opMembrY(B,alf)&&$opMembrY(n,alf))) {
+                $line=57;
+                if (!$opEqualY(n,'#')) {
+                  $line=58;
+                  $result=GCollections.asList(A,n);
+                  if (true) break $try;
+                }
+                else {
+                  $line=60;
+                  $result="err";
+                  if (true) break $try;
+                }
+              }
+              else {
+                $line=63;
+                $result="err";
+                if (true) break $try;
+              }
+            }
+          }
+          else {
+            $line=66;
+            Object a=$fix($opModulY($opAdditY($getArrayValue(B,new Object[]{1,0}),1),3));
+            $line=67;
+            Object b=$fix($getArrayValue(B,new Object[]{1,1}));
+            $line=69;
+            if (($opEqualY(n,"num")&&$opEqualY($getArrayValue(B,new Object[]{0}),':'))) {
+              $line=70;
               $result="err";
               if (true) break $try;
             }
-          }
-        }
-        else {
-          $line=57;
-          Object a=$fix($opModulY($opAdditY($getArrayValue(B,new Object[]{1,0}),1),3));
-          $line=58;
-          Object b=$fix($getArrayValue(B,new Object[]{1,1}));
-          $line=60;
-          if (($opEqualY(n,"num")&&$opEqualY($getArrayValue(B,new Object[]{0}),':'))) {
-            $line=61;
-            $result="err";
-            if (true) break $try;
-          }
-          else {
-            $line=63;
-            if ($opEqualY(n,b)) {
-              $line=64;
-              $result="num";
-              if (true) break $try;
-            }
             else {
-              $line=65;
-              if (($opEqualY(a,0)&&$opMembrY(n,alf))) {
-                $line=66;
-                $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,b)));
+              $line=71;
+              if ($opEqualY(n,$getArrayValue(A,new Object[]{0}))) {
+                $line=72;
+                $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
                 if (true) break $try;
               }
               else {
-                $line=67;
-                if (($opEqualY(a,1)&&!$opMembrY(n,alf))) {
-                  $line=68;
+                $line=73;
+                if ($opEqualY(n,$getArrayValue(A,new Object[]{1}))) {
+                  $line=74;
                   $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
                   if (true) break $try;
                 }
                 else {
-                  $line=69;
-                  if (($opEqualY(a,2)&&!$opMembrY(n,alf))) {
-                    $line=70;
-                    $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                  $line=75;
+                  if (($opEqualY(n,P2Deco.toUpper($getArrayValue(A,new Object[]{0})))&&$opEqualY(a,2))) {
+                    $line=76;
+                    $result="err";
                     if (true) break $try;
                   }
                   else {
-                    $line=71;
-                    if ($opEqualY(n,'#')) {
-                      $line=72;
-                      $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                    $line=77;
+                    if (($opEqualY(n,P2Deco.nextToUpper($getArrayValue(A,new Object[]{0})))&&$opEqualY(a,1))) {
+                      $line=78;
+                      $result="err";
                       if (true) break $try;
                     }
                     else {
-                      $line=73;
-                      if (($opEqualY(a,1)&&$opEqualY($getArrayValue(B,new Object[]{0}),P2Deco.backToDown(n)))) {
-                        $line=74;
+                      $line=79;
+                      if (($opEqualY(n,P2Deco.toUpper($getArrayValue(A,new Object[]{1})))&&$opEqualY(a,2))) {
+                        $line=80;
                         $result="err";
                         if (true) break $try;
                       }
                       else {
-                        $line=75;
-                        if (($opEqualY(a,2)&&$opEqualY($getArrayValue(B,new Object[]{0}),P2Deco.toDown(n)))) {
-                          $line=76;
+                        $line=81;
+                        if (($opEqualY(n,P2Deco.nextToUpper($getArrayValue(A,new Object[]{1})))&&$opEqualY(a,1))) {
+                          $line=82;
                           $result="err";
                           if (true) break $try;
                         }
                         else {
-                          $line=78;
-                          $result="err";
-                          if (true) break $try;
+                          $line=84;
+                          if ($opEqualY(n,b)) {
+                            $line=85;
+                            $result="num";
+                            if (true) break $try;
+                          }
+                          else {
+                            $line=87;
+                            if (($bool(($opEqualY(n,'#')||$opEqualY(n,$opIntvlY('0','4'))))&&$opEqualY($getArrayValue(B,new Object[]{0}),':'))) {
+                              $line=88;
+                              $result="err";
+                              if (true) break $try;
+                            }
+                            else {
+                              $line=90;
+                              if (($opEqualY(a,0)&&$opMembrY(n,alf))) {
+                                $line=91;
+                                $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,b)));
+                                if (true) break $try;
+                              }
+                              else {
+                                $line=93;
+                                if (($opEqualY(a,1)&&$opMembrY(n,M))) {
+                                  $line=94;
+                                  $result=GCollections.asList(A,GCollections.asList(P2Deco.backToDown(n),GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                                  if (true) break $try;
+                                }
+                                else {
+                                  $line=96;
+                                  if (($opEqualY(a,2)&&$opMembrY(n,M))) {
+                                    $line=97;
+                                    $result=GCollections.asList(A,GCollections.asList(P2Deco.toDown(n),GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                                    if (true) break $try;
+                                  }
+                                  else {
+                                    $line=99;
+                                    if ($opEqualY(n,'#')) {
+                                      $line=100;
+                                      $result=GCollections.asList(A,GCollections.asList(n,GCollections.asList(a,$opModulY($opAdditY(b,1),5))));
+                                      if (true) break $try;
+                                    }
+                                    else {
+                                      $line=102;
+                                      if (($opEqualY(a,1)&&$opEqualY($getArrayValue(B,new Object[]{0}),P2Deco.backToDown(n)))) {
+                                        $line=103;
+                                        $result="err";
+                                        if (true) break $try;
+                                      }
+                                      else {
+                                        $line=105;
+                                        if (($opEqualY(a,2)&&$opEqualY($getArrayValue(B,new Object[]{0}),P2Deco.toDown(n)))) {
+                                          $line=106;
+                                          $result="err";
+                                          if (true) break $try;
+                                        }
+                                        else {
+                                          $line=109;
+                                          $result="err";
+                                          if (true) break $try;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
                         }
                       }
                     }
@@ -245,7 +322,7 @@ public final class P2Deco {
           }
         }
       }
-      $line=81;
+      $line=112;
       $rethrow(new RuntimeException("The function \"\u03B4(\u27E8A,B\u27E9:java.lang.Iterable,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -257,26 +334,26 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=84;
+      $line=115;
       if (($opEqualY(A,'I')&&!$opMembrY(n,alf))) {
-        $line=85;
+        $line=116;
         $result="";
         if (true) break $try;
       }
       else {
-        $line=86;
+        $line=117;
         if ($opEqualY(A,'I')) {
-          $line=87;
+          $line=118;
           $result=n;
           if (true) break $try;
         }
         else {
-          $line=89;
+          $line=120;
           $result="";
           if (true) break $try;
         }
       }
-      $line=91;
+      $line=122;
       $rethrow(new RuntimeException("The function \"h(A:Object,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -291,86 +368,86 @@ public final class P2Deco {
       java.util.Iterator $v4=GCollections.unmodifiableCollection($v3).iterator();
       Object A=$v4.next();
       Object B=$v4.next();
-      $line=94;
+      $line=125;
       if ((($opEqualY(A,"")||$bool((!$opMembrY(A,alf)&&$bool(($opEqualY($getArrayValue(A,new Object[]{0}),"")||$opEqualY($getArrayValue(A,new Object[]{1}),""))))))||$bool(((!$opMembrY(B,alf)&&$opGreatY($opAbsolY(B),1))&&$opEqualY($getArrayValue(B,new Object[]{0}),""))))) {
-        $line=95;
+        $line=126;
         $result="";
         if (true) break $try;
       }
       else {
-        $line=96;
+        $line=127;
         if ($opMembrY(A,alf)) {
-          $line=97;
+          $line=128;
           if (($opMembrY(B,alf)&&$opEqualY(n,':'))) {
-            $line=98;
+            $line=129;
             $result=':';
             if (true) break $try;
           }
           else {
-            $line=99;
+            $line=130;
             if ((!$opMembrY(B,alf)&&$opMembrY(n,alf))) {
-              $line=100;
+              $line=131;
               $result=n;
               if (true) break $try;
             }
             else {
-              $line=102;
+              $line=133;
               $result="";
               if (true) break $try;
             }
           }
         }
         else {
-          $line=105;
+          $line=136;
           if ($opEqualY(n,':')) {
-            $line=106;
+            $line=137;
             $result="";
             if (true) break $try;
           }
           else {
-            $line=107;
+            $line=138;
             if ($opEqualY(n,$opIntvlY('0','4'))) {
-              $line=108;
+              $line=139;
               $result='$';
               if (true) break $try;
             }
             else {
-              $line=109;
+              $line=140;
               if ($opEqualY(n,$getArrayValue(A,new Object[]{0}))) {
-                $line=110;
+                $line=141;
                 $result=$getArrayValue(A,new Object[]{1});
                 if (true) break $try;
               }
               else {
-                $line=111;
+                $line=142;
                 if ($opEqualY(n,$getArrayValue(A,new Object[]{1}))) {
-                  $line=112;
+                  $line=143;
                   $result=$getArrayValue(A,new Object[]{0});
                   if (true) break $try;
                 }
                 else {
-                  $line=113;
-                  if ((!$opMembrY(n,A)&&$opEqualY(n,'#'))) {
-                    $line=114;
+                  $line=144;
+                  if ($opEqualY(n,'#')) {
+                    $line=145;
                     $result=$getArrayValue(B,new Object[]{0});
                     if (true) break $try;
                   }
                   else {
-                    $line=115;
+                    $line=146;
                     if (((!$opMembrY(n,A)&&!$opEqualY(n,$getArrayValue(B,new Object[]{0})))&&$opEqualY($getArrayValue(B,new Object[]{1,0}),1))) {
-                      $line=116;
+                      $line=147;
                       $result=P2Deco.backToDown(n);
                       if (true) break $try;
                     }
                     else {
-                      $line=117;
+                      $line=148;
                       if (((!$opMembrY(n,A)&&!$opEqualY(n,$getArrayValue(B,new Object[]{0})))&&$opEqualY($getArrayValue(B,new Object[]{1,0}),2))) {
-                        $line=118;
+                        $line=149;
                         $result=P2Deco.toDown(n);
                         if (true) break $try;
                       }
                       else {
-                        $line=120;
+                        $line=151;
                         $result=n;
                         if (true) break $try;
                       }
@@ -382,7 +459,7 @@ public final class P2Deco {
           }
         }
       }
-      $line=123;
+      $line=154;
       $rethrow(new RuntimeException("The function \"h(\u27E8A,B\u27E9:java.lang.Iterable,n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -394,10 +471,10 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=126;
+      $line=157;
       $result="";
       if (true) break $try;
-      $line=127;
+      $line=158;
       $rethrow(new RuntimeException("The function \"g(s:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -409,15 +486,15 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=130;
+      $line=161;
       Character r=null;
       r=$defaultValue(Character.class);
-      $line=131;
+      $line=162;
       r=$cast(Character.class,$fix($opAdditY($opAdditY($opModulY($opSubtrY($opSubtrY(n,'a'),1),26),32),'a')));
-      $line=132;
+      $line=163;
       $result=r;
       if (true) break $try;
-      $line=133;
+      $line=164;
       $rethrow(new RuntimeException("The function \"backToDown(n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
@@ -429,19 +506,59 @@ public final class P2Deco {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=136;
+      $line=167;
       Character r=null;
       r=$defaultValue(Character.class);
-      $line=137;
+      $line=168;
       r=$cast(Character.class,$fix($opAdditY($opAdditY($opSubtrY(n,'a'),32),'a')));
-      $line=138;
+      $line=169;
       $result=r;
       if (true) break $try;
-      $line=139;
+      $line=170;
       $rethrow(new RuntimeException("The function \"toDown(n:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
       $rethrow($throwable,P2Deco.class,"toDown",$line);
+    }
+    return $result;
+  }
+  public static Object nextToUpper(Object n) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=173;
+      Character r=null;
+      r=$defaultValue(Character.class);
+      $line=174;
+      r=$cast(Character.class,$fix($opAdditY($opSubtrY($opModulY($opAdditY($opSubtrY(n,'a'),1),26),32),'a')));
+      $line=175;
+      $result=r;
+      if (true) break $try;
+      $line=176;
+      $rethrow(new RuntimeException("The function \"nextToUpper(n:Object)\" did not return a value."));
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,P2Deco.class,"nextToUpper",$line);
+    }
+    return $result;
+  }
+  public static Object toUpper(Object n) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=179;
+      Character r=null;
+      r=$defaultValue(Character.class);
+      $line=180;
+      r=$cast(Character.class,$fix($opAdditY($opSubtrY($opSubtrY(n,'a'),32),'a')));
+      $line=181;
+      $result=r;
+      if (true) break $try;
+      $line=182;
+      $rethrow(new RuntimeException("The function \"toUpper(n:Object)\" did not return a value."));
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,P2Deco.class,"toUpper",$line);
     }
     return $result;
   }
