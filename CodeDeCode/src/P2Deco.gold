@@ -25,7 +25,7 @@ function createDecoder ( ) : ITransducer begin
 	Σ := alf  ∪ {':'} ∪ { '#' } ∪ ( 'A' ‥ 'Z' ) ∪ ( '0' ‥ '4' )
 	Σ´ := alf  ∪ {':'} ∪ {'$'}
 	q₀ := 'I'
-	F := "num"
+	F := {"num"}
 
 	return GDeterministicTransducer ( Q , Σ , Σ´ , q₀ , F , δ , g , h )
 end
@@ -105,12 +105,12 @@ function h ( ⟨ A , B ⟩ , n ) begin
 		if n = ':' then
 			return λ
 		elseif n = ( '0' ‥ '4' ) then
-			return "$"
+			return '$'
 		elseif n = A[0] then
 			return A[1]
 		elseif n = A[1] then
 			return A[0]
-		elseif n ∉ A and n = "#" then
+		elseif n ∉ A and n = '#' then
 			return B[0]
 		elseif n ∉ A and n ≠ B[0] and B[1][0] = 1 then
 			return backToDown(n)

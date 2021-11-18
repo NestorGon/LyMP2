@@ -89,7 +89,7 @@ public final class P2Deco {
       $line=27;
       Object q_0=$fix('I');
       $line=28;
-      Object F=$fix("num");
+      Object F=$fix(GCollections.asSet("num"));
       $line=30;
       $result=$invokeConstructor(GDeterministicTransducer.class,new Object[]{Q,\u03A3,\u03A3_,q_0,F,new GMethod(P2Deco.class,"\u03B4"),new GMethod(P2Deco.class,"g"),new GMethod(P2Deco.class,"h")});
       if (true) break $try;
@@ -331,7 +331,7 @@ public final class P2Deco {
             $line=107;
             if ($opEqualY(n,$opIntvlY('0','4'))) {
               $line=108;
-              $result="$";
+              $result='$';
               if (true) break $try;
             }
             else {
@@ -350,7 +350,7 @@ public final class P2Deco {
                 }
                 else {
                   $line=113;
-                  if ((!$opMembrY(n,A)&&$opEqualY(n,"#"))) {
+                  if ((!$opMembrY(n,A)&&$opEqualY(n,'#'))) {
                     $line=114;
                     $result=$getArrayValue(B,new Object[]{0});
                     if (true) break $try;
