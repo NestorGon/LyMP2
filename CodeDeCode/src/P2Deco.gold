@@ -36,19 +36,18 @@ end
 function δ ( A , n ) begin
 	
 	//Inicializacion
-	if A = 'I' and n ∉ alf then
-		return "err"
-	elseif A = 'I' then
+	if A = 'I' and n in alf then
 		return ⟨ n , λ ⟩
-	elseif A = "err" or A = "num" then
+	else
 		return "err"
 	end
 end
 
 function δ ( ⟨ A , B ⟩ , n ) begin
-	if A ∈ M or B ∈ M or A='#'or B='#' then
+	
+	if A ∈ M or B ∈ M or A ='#'or B='#' then
 		return "err"
-	elseif A = λ or (A ∉ alf and |A| > 1 and (A[0] = λ or A[1] = λ)) or (B ∉ alf and |B| > 1 and B[0] = λ) then
+	elseif A = λ or (A ∉ alf and |A| > 1 and (A[0] = λ or A[1] = λ )) or (B ∉ alf and |B| > 1 and B[0] = λ) then
 		return "err"
 	elseif A ∈ alf then
 		if B ∈ alf and n = ':' then
@@ -80,6 +79,8 @@ function δ ( ⟨ A , B ⟩ , n ) begin
 			return "err"
 		elseif n = nextToUpper(A[1]) and a=1 then
 			return "err"
+		elseif B[1][0]=0 and n∈M then
+			return "err"
 		//Si el valor es igual a el final termina
 		elseif n = b then
 			return "num"
@@ -97,7 +98,7 @@ function δ ( ⟨ A , B ⟩ , n ) begin
 			return ⟨ A , ⟨ toDown(n) , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
 		//Si el simbolo es # aumentar el numero de cambios
 		elseif n='#' then		
-			return ⟨ A , ⟨ n , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
+			return ⟨ A , ⟨ B[0] , ⟨ a , ( b + 1 ) % 5 ⟩ ⟩ ⟩
 		//Si %3 es 1 y el anterior es igual al actual (con cambio) manda error porque deberia ser #
 		elseif a=1 and B[0]== backToDown(n)then
 			return "err"
@@ -122,7 +123,9 @@ function h ( A , n ) begin
 end
 
 function h ( ⟨ A , B ⟩ , n ) begin
-	if A = λ or (A ∉ alf and (A[0] = λ or A[1] = λ)) or ( B ∉ alf and |B| > 1 and B[0] = λ) then
+	if A ∈ M or B ∈ M or A ='#'or B='#' then
+		return λ
+	elseif A = λ or (A ∉ alf and (A[0] = λ or A[1] = λ)) or ( B ∉ alf and |B| > 1 and B[0] = λ) then
 		return λ
 	elseif A ∈ alf then
 		if B ∈ alf and n = ':' then
