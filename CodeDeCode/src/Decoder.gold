@@ -16,9 +16,9 @@ procedure main ( args : String [ ] ) begin
 end
 
 function createDecoder ( ) : ITransducer begin
-	alf := ( 'a' ‥ 'z' )
+	alf := ( 'a' ‥ 'z' ) ∪ {'z'}
 	alfE := ( 'A' ‥ 'Z' )
-	E := alf ∪ alfE ∪ {'#'}
+	E := alf ∪ {'#'}
 	A := alf ∪ { λ }
 	B := ( 0 ‥ 2 ) × ( 0 ‥ 4 )
 	C := (E × B) ∪ {⟨':',⟨0,0⟩⟩}
@@ -63,7 +63,9 @@ function δ ( ⟨ A , B ⟩ , n ) begin
 		elseif n = ':' or (B[0] = ':' and n = '#') then
 			return "err"
 		elseif n ∉ A  then
-			if n ∈ alfE and a = 1 then
+			if n = B[0] and n ≠ '#' then
+				return "err"
+			elseif n ∈ alfE and a = 1 then
 				return ⟨ A , ⟨ previousToLower(n) , ⟨ a , b ⟩ ⟩ ⟩
 			elseif n ∈ alfE and a = 2 then
 				return ⟨ A , ⟨ toLower(n) , ⟨ a , b ⟩ ⟩ ⟩

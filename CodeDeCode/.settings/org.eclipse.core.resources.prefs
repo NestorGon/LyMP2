@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
 encoding//src-gen/Decoder.java=UTF-8
-encoding//src-gen/P2.java=UTF-8
-encoding//src-gen/P2Deco.java=UTF-8
+encoding//src-gen/P2Coder.java=UTF-8
+encoding//src-gen/P2Decoder.java=UTF-8
 encoding//src-gen/Utilities.java=UTF-8
 encoding//src/Decoder.gold=UTF-8
-encoding//src/P2Deco.gold=UTF-8
+encoding//src/P2Decoder.gold=UTF-8
 encoding/<project>=UTF-8
