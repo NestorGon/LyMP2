@@ -59,7 +59,7 @@ public final class P2Decoder {
       java.util.Scanner sc=null;
       sc=$invokeConstructor(java.util.Scanner.class,new Object[]{$invokeField(System.class,"in",true,null)});
       $line=8;
-      Object decoder=$fix($invokeMethod(P2Decoder.class,"createDecoder",true,null,new Object[]{}));
+      Object decoder=$fix(P2Decoder.createDecoder());
       $line=14;
       Utilities.test($cast(gold.structures.automaton.IAutomaton.class,decoder));
     }
@@ -72,7 +72,7 @@ public final class P2Decoder {
     Object $result=null;
     $try:try {
       $line=19;
-      alf=$fix($opUnionY($opIntvlY('a','z'),GCollections.asSet('z')));
+      alf=$fix($opIntvlY('a','z'));
       $line=20;
       alfE=$fix($opIntvlY('A','Z'));
       $line=21;
@@ -214,14 +214,14 @@ public final class P2Decoder {
                     $line=68;
                     if (($opMembrY(n,alfE)&&$opEqualY(a,1))) {
                       $line=69;
-                      $result=GCollections.asList(A,GCollections.asList($invokeMethod(P2Decoder.class,"previousToLower",true,null,new Object[]{n}),GCollections.asList(a,b)));
+                      $result=GCollections.asList(A,GCollections.asList(P2Decoder.previousToLower(n),GCollections.asList(a,b)));
                       if (true) break $try;
                     }
                     else {
                       $line=70;
                       if (($opMembrY(n,alfE)&&$opEqualY(a,2))) {
                         $line=71;
-                        $result=GCollections.asList(A,GCollections.asList($invokeMethod(P2Decoder.class,"toLower",true,null,new Object[]{n}),GCollections.asList(a,b)));
+                        $result=GCollections.asList(A,GCollections.asList(P2Decoder.toLower(n),GCollections.asList(a,b)));
                         if (true) break $try;
                       }
                       else {
@@ -390,14 +390,14 @@ public final class P2Decoder {
                   $line=122;
                   if (($opMembrY(n,alfE)&&$opEqualY(a,1))) {
                     $line=123;
-                    $result=$invokeMethod(P2Decoder.class,"previousToLower",true,null,new Object[]{n});
+                    $result=P2Decoder.previousToLower(n);
                     if (true) break $try;
                   }
                   else {
                     $line=124;
                     if (($opMembrY(n,alfE)&&$opEqualY(a,2))) {
                       $line=125;
-                      $result=$invokeMethod(P2Decoder.class,"toLower",true,null,new Object[]{n});
+                      $result=P2Decoder.toLower(n);
                       if (true) break $try;
                     }
                     else {

@@ -16,7 +16,7 @@ procedure main ( args : String [ ] ) begin
 end
 
 function createDecoder ( ) : ITransducer begin
-	alf := ( 'a' ‥ 'z' ) ∪ {'z'}
+	alf := ( 'a' ‥ 'z' )
 	alfE := ( 'A' ‥ 'Z' )
 	E := alf ∪ {'#'}
 	A := alf ∪ { λ }
